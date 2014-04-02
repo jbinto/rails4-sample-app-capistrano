@@ -6,6 +6,8 @@ It flows directly from my other repo, [jbinto/ansible-play](https://github.com/j
 
 This repo is forked from [mhartl/sample_app_4_0_upgrade](https://github.com/mhartl/sample_app_4_0_upgrade).
 
+**Work in progress!** The instructions are still a little clunky, I'm updating them as I learn. It's evident I need to improve certain things. For instance, I'm not quite sure yet where Ansible should end and Capistrano should begin.
+
 
 ## Usage
 
@@ -19,13 +21,13 @@ cd sample_app_4_0_upgrade
 cap production deploy:setup_config
 ```
 
-**Note:** This part is still clunky. Writing the instructions as I go, it's evident I need to improve it.
+
 
 The database.example.yml is copied over, ssh in and add your username/host/password.
 
 ```
 ssh deploy@10.33.33.33
-cd path/to/app/shared/config
+cd ~/apps/APP_NAME/shared/config
 cp database.example.yml database.yml
 vi database.yml
 ```
