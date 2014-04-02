@@ -1,4 +1,46 @@
-# Ruby on Rails Tutorial: sample application
+# Ruby on Rails Tutorial: sample application - using Capistrano
+
+This is an attempt to create a repeatable deployment script for the Ruby on Rails Tutorial (Michael Hartl) sample application to a VPS using Capistrano.
+
+It flows directly from my other repo, [jbinto/ansible-play](https://github.com/jbinto/ansible-play), where I set up an Ubuntu deployment environment using Ansible and Vagrant.
+
+This repo is forked from [mhartl/sample_app_4_0_upgrade](https://github.com/mhartl/sample_app_4_0_upgrade).
+
+
+## Usage
+
+First, set up the [jbinto/ansible-play](https://github.com/jbinto/ansible-play) Vagrant/Ansible box.
+
+(Or, adapt the code to your environment. Specifically, `config/deploy.rb`, `config/deploy/*` and `lib/capistrano/*`.)
+
+```
+git clone https://github.com/jbinto/sample_app_4_0_upgrade.git
+cd sample_app_4_0_upgrade
+cap production deploy:setup_config
+```
+
+**Note:** This part is still clunky. Writing the instructions as I go, it's evident I need to improve it.
+
+The database.example.yml is copied over, ssh in and add your username/host/password.
+
+```
+ssh deploy@10.33.33.33
+cd path/to/app/shared/config
+cp database.example.yml database.yml
+vi database.yml
+```
+
+Now, deploy the app:
+
+```
+cap production deploy
+```
+
+** TODO: Migrations?
+** TODO: Restart nginx?
+
+
+## Original readme
 
 This is the sample application for
 [*Ruby on Rails Tutorial: Learn Web Development with Rails*](http://railstutorial.org/)
