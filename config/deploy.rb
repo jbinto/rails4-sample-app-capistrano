@@ -39,6 +39,7 @@ set :tests, ["spec"]
 ## Depends on lib/capistrano/tasks/setup_config.cap
 set(:config_files, %w(
   nginx.conf
+  application.yml
   database.example.yml
 ))
 
@@ -47,10 +48,14 @@ set(:executable_config_files, [])
 # files which need to be symlinked to other parts of the
 # filesystem. For example nginx virtualhosts, log rotation
 # init scripts etc.
+
+# BUG: fetch(:full_app_name) is not available here.
+# It's defined in production.rb, which isn't loaded yet.
+# Could have an env clash here.
 set(:symlinks, [
   {
     source: "nginx.conf",
-    link: "/etc/nginx/sites-enabled/#{fetch(:full_app_name)}"
+    link: "/etc/nginx/sites-enabled/#{fetch(:application)}"
   }
 ])
 
