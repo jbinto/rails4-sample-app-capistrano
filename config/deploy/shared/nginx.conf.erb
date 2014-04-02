@@ -1,7 +1,7 @@
 server {
   listen 80 default deferred;
   root <%= fetch(:deploy_to) %>/current/public;
-  passenger_enabled on
+  passenger_enabled on;
 
   location ^~ /assets/ {
     gzip_static on;
