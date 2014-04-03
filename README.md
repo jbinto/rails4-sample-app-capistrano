@@ -11,27 +11,23 @@ This repo is forked from [mhartl/sample_app_4_0_upgrade](https://github.com/mhar
 
 ## Usage
 
-First, set up the [jbinto/ansible-ubuntu-rails-server](https://github.com/jbinto/ansible-ubuntu-rails-server) Vagrant/Ansible box.
+First, set up the [jbinto/ansible-ubuntu-rails-server](https://github.com/jbinto/ansible-ubuntu-rails-server) Vagrant/Ansible box. *(Or, adapt the code to your environment. Specifically, `config/deploy.rb`, `config/deploy/*` and `lib/capistrano/*`.)*
 
-(Or, adapt the code to your environment. Specifically, `config/deploy.rb`, `config/deploy/*` and `lib/capistrano/*`.)
+This means you already have a Postgres database set up for your app. You have a Postgres user with a generated password, and a `database.yml` with this password already in the right place (`~/apps/<APP_NAME>/shared/config/`). In theory, you should never have to see or touch this. Thanks to Ansible, the intermediate "ssh into the server and type in your password" step is gone.
+
+**Clone the repo:**
 
 ```
 git clone https://github.com/jbinto/sample_app_4_0_upgrade.git
 cd sample_app_4_0_upgrade
+```
+**Copy app specific configuration files:**
+
+```
 cap production deploy:setup_config
 ```
 
-The database.example.yml is copied over, ssh in and add your username/host/password.
-
-```
-ssh deploy@10.33.33.33
-cd ~/apps/APP_NAME/shared/config
-cp database.example.yml database.yml
-vi database.yml
-```
-
-Now, deploy the app:
-
+**Deploy:**
 ```
 cap production deploy
 ```

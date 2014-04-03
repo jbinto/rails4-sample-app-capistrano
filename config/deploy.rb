@@ -40,7 +40,6 @@ set :tests, ["spec"]
 set(:config_files, %w(
   nginx.conf
   application.yml
-  database.example.yml
 ))
 
 set(:executable_config_files, [])
