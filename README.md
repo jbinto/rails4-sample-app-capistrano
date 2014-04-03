@@ -21,8 +21,6 @@ cd sample_app_4_0_upgrade
 cap production deploy:setup_config
 ```
 
-
-
 The database.example.yml is copied over, ssh in and add your username/host/password.
 
 ```
@@ -36,9 +34,10 @@ Now, deploy the app:
 
 ```
 cap production deploy
+cap production deploy:bundle
+cap production deploy:migrate
 ```
 
-** TODO: Migrations?
 ** TODO: Restart nginx?
 
 
