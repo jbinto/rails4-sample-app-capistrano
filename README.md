@@ -1,8 +1,8 @@
-# Ruby on Rails Tutorial: sample application - using Capistrano
+# jbinto/rails4-sample-app-capistrano
 
-This is an attempt to create a repeatable deployment script for the Ruby on Rails Tutorial (Michael Hartl) sample application to a VPS using Capistrano.
+This is an attempt to create a repeatable deployment script for the Ruby on Rails Tutorial (Michael Hartl) sample application to a VPS using Capistrano 3.1.0.
 
-It flows directly from my other repo, [jbinto/ansible-play](https://github.com/jbinto/ansible-play), where I set up an Ubuntu deployment environment using Ansible and Vagrant.
+It flows directly from my other repo, [jbinto/ansible-ubuntu-rails-server](https://github.com/jbinto/ansible-ubuntu-rails-server), where I set up an Ubuntu deployment environment using Ansible and Vagrant.
 
 This repo is forked from [mhartl/sample_app_4_0_upgrade](https://github.com/mhartl/sample_app_4_0_upgrade).
 
@@ -11,7 +11,7 @@ This repo is forked from [mhartl/sample_app_4_0_upgrade](https://github.com/mhar
 
 ## Usage
 
-First, set up the [jbinto/ansible-play](https://github.com/jbinto/ansible-play) Vagrant/Ansible box.
+First, set up the [jbinto/ansible-ubuntu-rails-server](https://github.com/jbinto/ansible-ubuntu-rails-server) Vagrant/Ansible box.
 
 (Or, adapt the code to your environment. Specifically, `config/deploy.rb`, `config/deploy/*` and `lib/capistrano/*`.)
 
