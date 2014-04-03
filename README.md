@@ -34,12 +34,26 @@ Now, deploy the app:
 
 ```
 cap production deploy
+```
+
+This will automatically run bundler and migrations.
+
+You can do this manually:
+
+```
 cap production deploy:bundle
 cap production deploy:migrate
 ```
 
 ** TODO: Restart nginx?
 
+
+## Issues
+
+When you first clone the repo, you need to do a few things:
+
+* `cp db/database.yml.example db/database.yml` (since database.yml is under gitignore)
+* `bundle exec rake db:test:prepare` (since there's a Capistrano task to run `rake spec` before deploying.)
 
 ## Original readme
 
@@ -56,3 +70,5 @@ by [Michael Hartl](http://michaelhartl.com/). You can use this reference impleme
     $ bundle exec rspec spec/
 
 If the tests don't pass, it means there may be something wrong with your system. If they do pass, then you can debug your code by comparing it with the reference implementation.
+
+
