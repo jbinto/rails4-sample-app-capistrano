@@ -11,7 +11,7 @@ This repo is forked from [mhartl/sample_app_4_0_upgrade](https://github.com/mhar
 
 ## Usage
 
-First, set up the [jbinto/ansible-ubuntu-rails-server](https://github.com/jbinto/ansible-ubuntu-rails-server) Vagrant/Ansible box. *(Or, adapt the code to your environment. Specifically, `config/deploy.rb`, `config/deploy/*` and `lib/capistrano/*`.)*
+First, set up the [jbinto/ansible-ubuntu-rails-server](https://github.com/jbinto/ansible-ubuntu-rails-server) Vagrant/Ansible box. *(Or, adapt the code to your environment. Specifically, `config/deploy.rb`, `config/deploy/` and `lib/capistrano/`.)*
 
 This means you already have a Postgres database set up for your app. You have a Postgres user with a generated password, and a `database.yml` with this password already in the right place (`~/apps/<APP_NAME>/shared/config/`). In theory, you should never have to see or touch this. Thanks to Ansible, the intermediate "ssh into the server and type in your password" step is gone.
 
@@ -27,21 +27,30 @@ cd sample_app_4_0_upgrade
 cap production deploy:setup_config
 ```
 
+This creates `nginx.conf` and `application.yml` in the shared directory for this app.
+
 **Deploy:**
 ```
 cap production deploy
 ```
 
-This will automatically run bundler and migrations.
+This will:
 
-You can do this manually:
+* rsync files to the server
+* (but not 'shared' files, like logs, pids, sockets, configs)
+* do some magic with rotating releases (keeps the past 5)
+* run bundler
+* run migrations
+
+You can do some tasks manually:
 
 ```
 cap production deploy:bundle
 cap production deploy:migrate
+cap production deploy:restart
 ```
 
-** TODO: Restart nginx?
+
 
 
 ## Issues

@@ -18,18 +18,6 @@ namespace :deploy do
         smart_template file
       end
 
-      # which of the above files should be marked as executable
-      executable_files = fetch(:executable_config_files)
-      executable_files.each do |file|
-        execute :chmod, "+x #{shared_path}/config/#{file}"
-      end
-
-      # symlink stuff which should be... symlinked
-      symlinks = fetch(:symlinks)
-
-      symlinks.each do |symlink|
-        sudo "ln -nfs #{shared_path}/config/#{symlink[:source]} #{sub_strings(symlink[:link])}"
-      end
     end
   end
 end
