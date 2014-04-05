@@ -6,7 +6,7 @@
 lock '3.1.0'
 
 set :application, 'sampleapp'
-set :deploy_user, 'deploy'
+set :deploy_user, 'geoffrey'
 
 set :scm, :git
 set :repo_url, 'git@github.com:jbinto/sample_app_4_0_upgrade.git'
@@ -34,13 +34,6 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # Depends on lib/capistrano/tasks/run_tests.cap
 set :tests, ["spec"]
 
-
-## Config files to be copied by deploy:setup_config
-## Depends on lib/capistrano/tasks/setup_config.cap
-set(:config_files, %w(
-  nginx.conf
-  application.yml
-))
 
 set :keep_releases, 5
 

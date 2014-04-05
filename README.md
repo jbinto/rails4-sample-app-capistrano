@@ -21,14 +21,6 @@ This means you already have a Postgres database set up for your app. You have a 
 git clone https://github.com/jbinto/sample_app_4_0_upgrade.git
 cd sample_app_4_0_upgrade
 ```
-**Copy app specific configuration files:**
-
-```
-cap production deploy:setup_config
-```
-
-This creates `nginx.conf` and `application.yml` in the shared directory for this app.
-
 **Deploy:**
 ```
 cap production deploy
