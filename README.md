@@ -68,4 +68,3 @@ by [Michael Hartl](http://michaelhartl.com/). You can use this reference impleme
 
 If the tests don't pass, it means there may be something wrong with your system. If they do pass, then you can debug your code by comparing it with the reference implementation.
 
-

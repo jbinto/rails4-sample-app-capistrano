@@ -27,7 +27,7 @@ set :keep_releases, 5
 # These are symlinks, so redeploys don't "overwrite" important files.
 # Not sure why app/database not updated. I get logs, sockets, pids, etc.
 
-set :linked_files, %w{config/database.yml config/application.yml}
+set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Run Rspec tests before deploying. Nifty.
