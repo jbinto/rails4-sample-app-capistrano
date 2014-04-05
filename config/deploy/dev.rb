@@ -14,7 +14,7 @@ set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
 
 # dont try and infer something as important as environment from
 # stage name.
-set :rails_env, :development
+set :rails_env, :production
 
 # whether we're using ssl or not, used for building nginx
 # config file
