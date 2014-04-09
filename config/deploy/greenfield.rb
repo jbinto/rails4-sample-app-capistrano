@@ -1,11 +1,14 @@
-set :stage, :minefield
+set :stage, :greenfield
 set :branch, "master"
-server 'minefield.416.bike', user: fetch(:deploy_user), roles: %w{web app db}, primary: true
+server 'greenfield.416.bike', user: fetch(:deploy_user), roles: %w{web app db}, primary: true
 
 # used in case we're deploying multiple versions of the same
 # app side by side. Also provides quick sanity checks when looking
 # at filepaths
-set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
+
+# XXX: the way the server is set up, it expects 'foo_production'
+# even if it is a staging/dev server
+set :full_app_name, "#{fetch(:application)}_production"
 
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
 
